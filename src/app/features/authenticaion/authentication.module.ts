@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 import { AuthenticationCompoent } from './authentication.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -10,7 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
         LoginComponent
     ],
     imports: [
-        AuthenticationRoutingModule
+        AuthenticationRoutingModule,
+        SharedModule,
     ]
 })
 export class AuthenticationModule {

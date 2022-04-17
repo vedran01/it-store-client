@@ -1,34 +1,20 @@
-<div class="container form-container">
-    <div class="row justify-content-center align-items-center">
-        <div>
-            <form class="form-login">
-                <div>
-                    <h1>Store Administration</h1>
-                    <p>Administration pannel for it-store</p>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Username</mat-label>
-                        <input matInput placeholder="Enter username">
-                        <mat-icon matSuffix>person</mat-icon>
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Enter password" type="password">
-                        <mat-icon matSuffix>visibility_off</mat-icon>
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <button mat-flat-button color="primary">Sign in</button>
-
-                    <p class="copyright">&copy; Store adminsitration panel by <a href="#">vbradara</a>.</p>
-                    <p>Version 1.0.0</p>
-                </div>
-            </form>
-        </div>
+<form class="form-login" (submit)="login(username.value, password.value)">
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Enter username" #username>
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
     </div>
-</div>
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter password" type="password" #password>
+            <mat-icon matSuffix>visibility_off</mat-icon>
+        </mat-form-field>
+    </div>
+    <div>
+        <button type="submit" mat-flat-button color="primary">Sign in</button>
+    </div>
+</form>

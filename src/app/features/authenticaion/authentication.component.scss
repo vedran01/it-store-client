@@ -1,0 +1,29 @@
+.form-login {
+    padding: 20px 0;
+    width: 450px;
+    //max-width: 450px;
+}
+
+.form-wrapper p {
+    color: gray;
+}
+
+.form-wrapper h1,
+.form-wrapper p {
+    text-align: center;
+}
+
+
+.form-wrapper h1,
+.form-wrapper p {
+    margin-bottom: 20px;
+}
+
+.form-container {
+    position: absolute;
+    height: 100%;
+}
+
+div.form-container > :first-child {
+    height: 100%;
+}

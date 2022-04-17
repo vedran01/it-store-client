@@ -5,22 +5,26 @@
 
 
 
-@mixin media-query($key, $size) {
-    @media only screen and (max-width: $size) {
+@mixin responsive-grid($key, $size) {
 
-        // @content
-        @for $col from 1 through $grid-columns {
-            .col-#{$key}-#{$col} {
-                flex: 0 0 calc(100% / $grid-columns) * $col;
+     @if ($size == 0) {
+        @content;
+    }
+
+    @else { 
+       @media screen and (min-width: $size) {
+
+            // @content
+            @for $col from 1 through $grid-columns {
+                .col-#{$key}-#{$col} {
+                    flex: 0 0 calc(100% / $grid-columns * $col);
+                }
             }
         }
-    }
+  }
 }
-
 
 @each $key,
 $val in $grid-breakpoints {
-    @include media-query($key, $val);
+    @include responsive-grid($key, $val);
 }
-
-

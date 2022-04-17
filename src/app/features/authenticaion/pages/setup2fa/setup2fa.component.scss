@@ -1,0 +1,17 @@
+.image-container {
+    padding: 20px 0;
+    width: 450px;
+    text-align: center;
+    //max-width: 450px;
+}
+
+.image-container > img {
+    width: 400;
+    //max-width: 450px;
+}
+
+
+.image-container button {
+    width: 100%;
+    margin-bottom: 20px;
+}

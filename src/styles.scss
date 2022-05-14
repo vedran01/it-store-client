@@ -1,3 +1,4 @@
+@use "sass:map";
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -32,11 +33,30 @@ $it-store-client-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($it-store-client-theme);
 
+
+@mixin theme-color-grabber($theme) {
+  // Parse the theme and create variables for each color in the pallete
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  // Create theme specfic styles
+  .primaryColorBG {
+    background-color: mat-color($primary);
+  }
+  .accentColorBG {
+    background-color: mat-color($accent);
+  }
+  .warnColorBG {
+    background-color: mat-color($warn);
+  }
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 @import './app/styles/variables';
 @import './app/styles/mixins';
 @import './app/styles/grid';
+@import './app/styles/spacing';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -45,6 +65,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none
 }
 
  // container
@@ -58,4 +82,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .align-items-center {
   align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+$color-config: mat.get-color-config($it-store-client-theme);
+
+$colors: (
+  primary: map.get($color-config, 'primary'),
+  accent: map.get($color-config, 'accent'),
+  warn: map.get($color-config, 'warn')
+);
+
+
+@each $name, $val in $colors {
+  .text-#{$name} {
+    color: mat.get-color-from-palette($val, 700);
+  }
 }

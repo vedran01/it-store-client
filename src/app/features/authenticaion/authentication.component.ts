@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { EAuthenticationEvent } from 'src/app/core/enum/enum.authentication-event';
+import { SecurityService } from 'src/app/core/service/security.service';
 import { AuthenticationEvent } from './model/authentication.model';
-import { AuthenticationService } from './service/authentication.service';
 
 
 @Component({
@@ -11,17 +12,22 @@ import { AuthenticationService } from './service/authentication.service';
 })
 export class AuthenticationCompoent implements OnInit {
 
-    constructor(private service: AuthenticationService, private router: Router) {}
+    message: string = '';
+
+    constructor(private service: SecurityService, 
+        private router: Router) {}
 
     ngOnInit(): void {
-        this.service.authenticationListener().subscribe(event => this.handleRouting(event));
+        this.service.authenticationListener()
+            .subscribe(event => this.handleRouting(event));
     }
 
     handleRouting(event: AuthenticationEvent): void {
 
         switch (event.type) {
             case EAuthenticationEvent.SUCCESS:
-                console.log('Go to dashboard');
+                 this.service.storeToken(event.data);
+                this.router.navigate(['dashboard']);
             break;
             case EAuthenticationEvent.SETUP_2FA:
                 this.router.navigateByUrl('login/setup2fa', { state: { event } });
@@ -30,7 +36,7 @@ export class AuthenticationCompoent implements OnInit {
                 this.router.navigate(['login/code2fa'], { state: { data: event.request }});
             break;
             case EAuthenticationEvent.FAILURE:
-                console.log('LOGIN FALIUE')
+                this.message = event.data
             break;
         }
 

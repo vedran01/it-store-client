@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
-import { AuthenticationRoutingModule, LoginRotungModule } from './authentication-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { AuthenticationRoutingModule, LoginRotungModule } from './authentication-routing.module';
 import { AuthenticationCompoent } from './authentication.component';
+import { Code2faComponent } from './pages/code2fa/code2fa.component';
 import { LoginComponent } from './pages/login/login.component';
 import { Setup2faComponent } from './pages/setup2fa/setup2fa.component';
-import { Code2faComponent } from './pages/code2fa/code2fa.component';
-import { AuthenticationService } from './service/authentication.service';
-
 
 @NgModule({
     declarations: [
@@ -17,12 +14,11 @@ import { AuthenticationService } from './service/authentication.service';
         AuthenticationRoutingModule,
         SharedModule,
     ],
-    providers: [AuthenticationService]
+    providers: []
 })
 export class AuthenticationModule {
 
 }
-
 
 @NgModule({
     declarations: [

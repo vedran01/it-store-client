@@ -9,13 +9,16 @@
 }
 
 .form-wrapper h1,
-.form-wrapper p {
+.form-wrapper p,
+.form-wrapper span {
+    display: block;
     text-align: center;
 }
 
 
 .form-wrapper h1,
-.form-wrapper p {
+.form-wrapper p,
+.form-wrapper span {
     margin-bottom: 20px;
 }
 

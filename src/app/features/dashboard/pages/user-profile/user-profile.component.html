@@ -1,34 +1,102 @@
 <div class="row">
-
     <div class="col-4 p-3">
         <h2>Profile</h2>
     </div>
     <div class="col-8">
         <mat-card class="p-1">
             <mat-card-header>
-              <div mat-card-avatar class="p-2" style="background-image: cover">
-                <img mat-card-image src="../assets/avatar.png" alt="Profile">
-              </div>
-              <mat-card-title>Shiba Inu</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <div mat-card-avatar class="p-2" style="background-image: cover">
+                    <img mat-card-image src="../assets/avatar.png" alt="Profile">
+                </div>
+                <mat-card-title>{{userProfile.firstname}} {{userProfile.lastname}}</mat-card-title>
+                <mat-card-subtitle>{{userProfile.username}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              
+
                 <div class="row">
-                    <div class="col-6">
-                        <p>Email</p>
-                        <p>mail</p>
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>Email</i>
+                        <p>{{userProfile.email}}</p>
                     </div>
-
-                    <div class="col-6">
-                        <p>Phone</p>
-                        <p>phonse</p>
+                    <div class="col-4">
+                        <i>Phone</i>
+                        <p>{{userProfile.phone}}</p>
                     </div>
-
                 </div>
-
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>City</i>
+                        <p>{{userProfile.city}}</p>
+                    </div>
+                    <div class="col-4">
+                        <i>Zip</i>
+                        <p>{{userProfile.zip}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>Street</i>
+                        <p>{{userProfile.street}}</p>
+                    </div>
+                    <div class="col-4">
+                        <i>Country</i>
+                        <p>{{userProfile.country}}</p>
+                    </div>
+                </div>
             </mat-card-content>
-          </mat-card>
+        </mat-card>
     </div>
+</div>
+<div class="m-4"></div>
+<div class="row">
+    <div class="col-4 p-3">
+        <h2>Security</h2>
+    </div>
+    <div class="col-8">
+        <mat-card class="p-1">
+            <mat-card-header>
+                <mat-card-title>Security</mat-card-title>
+                <mat-card-subtitle>Last active: {{userProfile.lastLogin}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
 
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>Enabled two factor</i>
+                        <p [class] = "userProfile.enabled2fa ? 'text-success' : 'text-warn'">{{userProfile.enabled2fa ? 'yes' : 'no'}}</p>
+                    </div>
+                    <div class="col-4">
+                        <i>Cofnigured two factor</i>
+                        <p>{{userProfile.configured2fa}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>Password changed</i>
+                        <p>{{userProfile.passwordChanged}}</p>
+                    </div>
+                    <div class="col-4">
+                        <i>Enabled</i>
+                        <p>{{userProfile.enabled}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <i>Account valid from</i>
+                        <p>{{userProfile.validFrom | date}}</p>
+                    </div>
+                    <div class="col-4">
+                        <i>Accoount valid till</i>
+                        <p>{{userProfile.validTill}}</p>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

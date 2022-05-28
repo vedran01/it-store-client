@@ -4,4 +4,7 @@
     .p-#{$key} {
         padding: $val;
     }
+    .m-#{$key} {
+        margin: $val;
+    }
 }

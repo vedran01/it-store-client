@@ -1,14 +1,17 @@
-<app-toolbar [userInfo]="userInfo" [drawer]="drawer"></app-toolbar>
+<div style="position: sticky;top:0;z-index: 100;">
+  <app-toolbar [userInfo]="userInfo" [drawer]="drawer"></app-toolbar>
+</div>
 
-<mat-drawer-container class="example-container" [hasBackdrop]="false" style="height:100%">
-  <mat-drawer #drawer [mode]="'side'" opened="true">
-    <app-sidenav></app-sidenav>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-    <!-- <mat-form-field appearance="fill">
+<div style="position:absolute;z-index: 1; width: 100%; top:64px; bottom: 0;">
+    <mat-drawer-container class="example-container" [hasBackdrop]="false" style="height: 100%">
+      <mat-drawer #drawer [mode]="'side'" opened="true">
+        <app-sidenav></app-sidenav>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+        <!-- <mat-form-field appearance="fill">
       <mat-label>Sidenav mode</mat-label>
       <mat-select #mode value="side">
         <mat-option value="side">Side</mat-option>
@@ -16,7 +19,7 @@
         <mat-option value="push">Push</mat-option>
       </mat-select>
     </mat-form-field> -->
-    <!-- <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
       <mat-label>Has backdrop</mat-label>
       <mat-select #hasBackdrop>
         <mat-option>Unset</mat-option>
@@ -24,6 +27,8 @@
         <mat-option [value]="false">False</mat-option>
       </mat-select>
     </mat-form-field> -->
-    <!-- <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button> -->
-  </mat-drawer-content>
-</mat-drawer-container>
+        <!-- <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button> -->
+      </mat-drawer-content>
+    </mat-drawer-container>
+
+</div>

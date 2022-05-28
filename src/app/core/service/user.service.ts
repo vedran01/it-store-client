@@ -19,8 +19,8 @@ export class UserService {
 
     }
 
-    findProfileById(arg0: string | null): Observable<UserProfile> {
-        throw new Error('Method not implemented.');
+    findProfileById(id: number): Observable<UserProfile> {
+        return this.http.get<UserProfile>(`${this.url}/user/${id}/settings`);
       }
 
 }
